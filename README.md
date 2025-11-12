@@ -21,10 +21,19 @@ element 中间连接层， 管理widget生命周期（创建，持有，更新 �
 renderobject  负责layout，paint及hittest 这才是渲染。
 
 值得注意的是：   三棵树并不是一一对应，或者一一映射的关系。
+ 举例说明
 ```dart
-void main() {
-  print('Hello Flutter');
-}
+Container(
+color:Colors.red,
+child:Text('aa'))
+
+
+widget tree               element tree                render tree
+Container                 statelessElement             没有
+DecoratedBox              renderobjectelement         renderdecoratedBox
+Text                      statelessElement            没有
+RichText                 renderobjectelement         renderparagraph 
+
 ```
 
 
