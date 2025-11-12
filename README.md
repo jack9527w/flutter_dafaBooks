@@ -1,8 +1,8 @@
-## flutter_dafaBooks
+# flutter_dafaBooks
 初探fluuter技术原理，深入浅出flutter文档
 
 
-#1.flutter 跨平台和其他跨平台技术的差异
+##1.flutter 跨平台和其他跨平台技术的差异
 
 其他部分跨平台技术使用的是解释性语言作为中转层 调用原生系统框架来渲染视图，这样无疑增加了一层开销。
 flutter 则是采用将dart 转化为机器码使用自带引擎，来渲染视图，并以此来消除不同平台间的显示 差异化。
@@ -14,13 +14,14 @@ impeller是flutter专用Gpu渲染引擎，于skia不同的是为预编译渲染�
  从安全分析的角度来看，在逆向时需要知道对应的flutter 的版本，也是因为内置引擎的版本不同，Gpu调用逻辑不同导致的。但更多的，我想应该是flutter engine的变化导致符号表snapshot的变化
 
 
- #2.关于到处都是的三棵树问题，（纯个人理解）
+ ##2.关于到处都是的三棵树问题，（纯个人理解）
 
 widget  只是一个视图的描述配置，并不渲染，每次rebuild时 重建
 element 中间连接层， 管理widget生命周期（创建，持有，更新 管理子element）以及结构，是可以复用的
 renderobject  负责layout，paint及hittest 这才是渲染。
 
-值得注意的是：   三棵树并不是一一对应，或者一一映射的关系。
+**值得注意的是：   三棵树并不是一一对应，或者一一映射的关系。**
+
  举例说明
 ```dart
 Container(
