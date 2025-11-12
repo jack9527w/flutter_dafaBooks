@@ -41,8 +41,10 @@ RichText                 renderobjectelement         renderparagraph
 ```
 
 为什么render tree 会缺少？
+
 因为 element 分为两类：
 componentelement： 这只是一个容器类，只负责逻辑和build子节点，他并没有对应的renderobject。包括statelesselement，statefulelement，ProxyElement
+
 renderobjectelement：这管理 paint，layout，hithest，它会创建并持有一个renderobject，调用渲染。包括 SingleChildRenderObjectElement,MultiChildRenderObjectElement,LeafRenderObjectElement
                    RenderTreeRootElement,RenderTreeRootElement
 
