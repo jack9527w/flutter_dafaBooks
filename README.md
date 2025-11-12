@@ -34,19 +34,27 @@ widget tree               element tree                render tree
 Container                 statelessElement             没有
 DecoratedBox              renderobjectelement         renderdecoratedBox
 Text                      statelessElement            没有
-RichText                 renderobjectelement         renderparagraph 
+RichText                 renderobjectelement         renderparagraph
+
+
 
 ```
 
+为什么render tree 会缺少？
+因为 element 分为两类：
+componentelement： 这只是一个容器类，只负责逻辑和build子节点，他并没有对应的renderobject。包括statelesselement，statefulelement，ProxyElement
+renderobjectelement：这管理 paint，layout，hithest，它会创建并持有一个renderobject，调用渲染。包括 SingleChildRenderObjectElement,MultiChildRenderObjectElement,LeafRenderObjectElement
+                   RenderTreeRootElement,RenderTreeRootElement
 
+举个例子
  
- 
-class CameraApp extends StatelessWidget {
-  const CameraApp({super.key});
+ ```dart
+class MyWidget extends StatelessWidget {   //Mywidget =》StatelessWidget =〉 stateleselement =》ComponentElement ，无renderobject
+  const MyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Container(                     //Container =》StatelessWidget =〉 stateleselement =》ComponentElement ，无renderobject，但是
   color: Colors.blue,
   child: Row(
     children: [
@@ -57,6 +65,28 @@ class CameraApp extends StatelessWidget {
 );
   }
 }
+
+
+
+
+ 
+      widget tree                           element tree                        render tree
+
+      MyWidget                             componentelement                        没有
+      Container                            componentelement                        没有
+      DecoratedBox                         renderobjectelement                    renderdecoratedBox    
+      Row                                  renderobjectelement                    renderFlex
+
+Image           Text                componentelement      componentelement           没有           没有
+RawImage        RichText            renderobjectelement   renderobjectelement       rederImage      renderparagraph
+
+
+
+
+以上element 只标出他的根element 类型，具体类型要查看源码，如Row 为MultiChildRenderObjectElement
+
+```
+
 
 
 
