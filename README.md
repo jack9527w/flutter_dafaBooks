@@ -29,6 +29,7 @@ child:Text('aa'))
 
 
 widget tree               element tree                render tree
+
 Container                 statelessElement             没有
 DecoratedBox              renderobjectelement         renderdecoratedBox
 Text                      statelessElement            没有
