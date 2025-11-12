@@ -60,7 +60,7 @@ class MyWidget extends StatelessWidget {   //Mywidget =》StatelessWidget =〉 s
   color: Colors.blue,
   child: Row(
     children: [
-      Image.network('https://www.example.com/1.png'),
+      Image.network('https://www.123213.com/1.png'),
       const Text('A'),
     ],
   ),
